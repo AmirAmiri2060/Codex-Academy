@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CODEX ACADEMY | طراحی سایت حرفه‌ای با هزینه اقتصادی" />
+  <title>CODEX ACADEMY | طراحی سایت</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #070707;
+      --bg2: #0d0d0d;
+      --card: #111111;
+      --card2: #151515;
+      --orange: #ff7a00;
+      --orange2: #ff9d2e;
+      --text: #ffffff;
+      --muted: #a7a7a7;
+      --border: rgba(255, 255, 255, .08);
+      --shadow: 0 20px 60px rgba(0, 0, 0, .35);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Vazirmatn", sans-serif;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(255,122,0,.13), transparent 25%),
+        radial-gradient(circle at 10% 40%, rgba(255,122,0,.06), transparent 25%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 92%);
+      margin: auto;
+    }
+
+    /* Header */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(7,7,7,.75);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--orange);
+    }
+
+    nav {
+      display: flex;
+      gap: 28px;
+      color: #ddd;
+      font-size: 14px;
+    }
+
+    nav a {
+      transition: .25s;
+    }
+
+    nav a:hover {
+      color: var(--orange);
+    }
+
+    .nav-btn {
+      background: var(--orange);
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #111;
+      transition: .25s;
+    }
+
+    .nav-btn:hover {
+      transform: translateY(-2px);
+      background: var(--orange2);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      background: var(--orange);
+      filter: blur(180px);
+      opacity: .09;
+      left: -150px;
+      top: 180px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 15px;
+      border: 1px solid rgba(255,122,0,.25);
+      background: rgba(255,122,0,.07);
+      border-radius: 100px;
+      color: var(--orange2);
+      font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(38px, 7vw, 75px);
+      line-height: 1.15;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 650px;
+      margin: auto auto 32px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 190px;
+      padding: 14px 22px;
+      border-radius: 13px;
+      font-weight: 700;
+      transition: .3s;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: #111;
+      box-shadow: 0 10px 35px rgba(255,122,0,.18);
+    }
+	  .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 15px 45px rgba(255,122,0,.3);
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+    }
+
+    .btn-secondary:hover {
+      border-color: rgba(255,122,0,.4);
+      color: var(--orange2);
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title small {
+      color: var(--orange);
+      font-weight: 700;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 5vw, 42px);
+      margin: 7px 0;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
+      font-size: 14px;
+    }
+
+    /* Services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service {
+      background: linear-gradient(145deg, var(--card2), var(--card));
+      border: 1px solid var(--border);
+      padding: 28px;
+      border-radius: 22px;
+      transition: .3s;
+    }
+
+    .service:hover {
+      transform: translateY(-7px);
+      border-color: rgba(255,122,0,.3);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,122,0,.1);
+      border-radius: 15px;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .service h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .service p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Pricing */
+    .pricing {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 30px;
+      position: relative;
+      transition: .3s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .price-card.featured {
+      border-color: var(--orange);
+      box-shadow: 0 15px 60px rgba(255,122,0,.1);
+    }
+
+    .popular {
+      position: absolute;
+      top: -13px;
+      right: 25px;
+      background: var(--orange);
+      color: #111;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 50px;
+    }
+
+    .price-card h3 {
+      font-size: 21px;
+    }
+
+    .price {
+      font-size: 30px;
+      font-weight: 900;
+      margin: 12px 0 20px;
+    }
+
+    .price span {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .features {
+      list-style: none;
+      color: #ccc;
+      font-size: 13px;
+      margin-bottom: 25px;
+    }
+
+    .features li {
+      margin: 10px 0;
+    }
+
+    .features li::before {
+      content: "✓";
+      color: var(--orange);
+      font-weight: 900;
+      margin-left: 8px;
+    }
+
+    .card-btn {
+      display: block;
+      text-align: center;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .featured .card-btn {
+      background: var(--orange);
+      color: #111;
+    }
+
+    /* Why us */
+    .why {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .why-text h2 {
+      font-size: 40px;
+      line-height: 1.35;
+      margin-bottom: 18px;
+    }
+
+    .why-text h2 span {
+      color: var(--orange);
+    }
+
+    .why-text p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .why-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .why-item {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 17px;
+      border-radius: 16px;
+    }
+
+    .why-item b {
+      font-size: 14px;
+    }
+
+    .why-item span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Steps */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+	  .step {
+      text-align: center;
+      padding: 25px 15px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: var(--orange);
+      color: #111;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* CTA */
+    .cta {
+      background:
+        linear-gradient(135deg, rgba(255,122,0,.16), rgba(255,122,0,.03)),
+        var(--card);
+      border: 1px solid rgba(255,122,0,.2);
+      border-radius: 30px;
+      padding: 65px 30px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: clamp(28px, 5vw, 45px);
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 25px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 18px;
+      color: white;
+      font-weight: 900;
+    }
+
+    .footer-logo span {
+      color: var(--orange);
+    }
+
+    /* Responsive */
+    @media (max-width: 850px) {
+      nav {
+        display: none;
+      }
+
+      .services,
+      .pricing {
+        grid-template-columns: 1fr;
+      }
+
+      .why {
+        grid-template-columns: 1fr;
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav {
+        height: 68px;
+      }
+
+      .nav-btn {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .why-text h2 {
+        font-size: 30px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo">CODEX <span>ACADEMY</span></a>
+
+      <nav>
+        <a href="#services">خدمات</a>
+        <a href="#pricing">تعرفه‌ها</a>
+        <a href="#why">چرا ما؟</a>
+        <a href="#steps">مراحل سفارش</a>
+      </nav>
+
+      <a class="nav-btn" href="https://t.me/Sfbhf" target="_blank">
+        مشاوره رایگان
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+
+          <div class="badge">
+            ✦ طراحی سایت اقتصادی و حرفه‌ای
+          </div>
+
+          <h1>
+            سایت حرفه‌ای،<br>
+            <span>هزینه اقتصادی</span>
+          </h1>
+
+          <p>
+            برای کسب‌وکار، فروشگاه، سایت شخصی و شرکتی،
+            سایت‌هایی مدرن، سریع و سازگار با موبایل طراحی می‌کنیم.
+          </p>
+
+          <div class="buttons">
+            <a href="https://t.me/Sfbhf" target="_blank" class="btn btn-primary">
+              💬 مشاوره و ثبت سفارش
+            </a>
+
+            <a href="#pricing" class="btn btn-secondary">
+              مشاهده تعرفه‌ها
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="container">
+
+        <div class="section-title">
+          <small>خدمات CODEX</small>
+          <h2>چه سایتی می‌خوای؟</h2>
+          <p>
+            از یک سایت ساده شخصی تا یک فروشگاه اینترنتی کامل،
+            می‌توانیم متناسب با نیاز و بودجه شما طراحی کنیم.
+          </p>
+        </div>
+
+        <div class="services">
+
+          <div class="service">
+            <div class="icon">💼</div>
+            <h3>سایت شرکتی</h3>
+            <p>معرفی حرفه‌ای شرکت، خدمات، تیم و راه‌های ارتباطی.</p>
+          </div>
+			<div class="service">
+            <div class="icon">👤</div>
+            <h3>سایت شخصی</h3>
+            <p>ساخت سایت شخصی و نمونه‌کار برای معرفی مهارت‌ها و فعالیت‌ها.</p>
+          </div>
+
+          <div class="service">
+            <div class="icon">🛒</div>
+            <h3>فروشگاه اینترنتی</h3>
+            <p>ساخت فروشگاه با صفحات محصول، سبد خرید و امکانات پایه.</p>
+          </div>
+
+          <div class="service">
+            <div class="icon">🎨</div>
+            <h3>صفحه اختصاصی</h3>
+            <p>طراحی صفحات خاص و اختصاصی متناسب با ایده شما.</p>
+          </div>
+
+          <div class="service">
+            <div class="icon">📱</div>
+            <h3>طراحی ریسپانسیو</h3>
+            <p>نمایش صحیح سایت در موبایل، تبلت و کامپیوتر.</p>
+          </div>
+
+          <div class="service">
+            <div class="icon">🔎</div>
+            <h3>سئوی پایه</h3>
+            <p>بهینه‌سازی اولیه ساختار سایت برای موتورهای جستجو.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="container">
+
+        <div class="section-title">
+          <small>PRICING</small>
+          <h2>تعرفه‌های طراحی سایت</h2>
+          <p>قیمت نهایی هر پروژه با توجه به امکانات موردنیاز مشخص می‌شود.</p>
+        </div>
+
+        <div class="pricing">
+
+          <div class="price-card">
+            <h3>🌱 پلن اقتصادی</h3>
+            <div class="price">
+              ۱,۵۰۰,۰۰۰
+              <span>تومان / شروع از</span>
+            </div>
+
+            <ul class="features">
+              <li>سایت معرفی ساده</li>
+              <li>تا ۳ صفحه</li>
+              <li>طراحی تمیز</li>
+              <li>کاملاً ریسپانسیو</li>
+            </ul>
+
+            <a href="https://t.me/Sfbhf" target="_blank" class="card-btn">
+              سفارش پلن
+            </a>
+          </div>
+
+          <div class="price-card featured">
+            <div class="popular">پیشنهاد ویژه</div>
+
+            <h3>🚀 پلن حرفه‌ای</h3>
+            <div class="price">
+              ۳,۰۰۰,۰۰۰
+              <span>تومان / شروع از</span>
+            </div>
+
+            <ul class="features">
+              <li>سایت چندصفحه‌ای</li>
+              <li>طراحی اختصاصی‌تر</li>
+              <li>ریسپانسیو موبایل</li>
+              <li>فرم تماس</li>
+              <li>تنظیمات اولیه سئو</li>
+            </ul>
+
+            <a href="https://t.me/Sfbhf" target="_blank" class="card-btn">
+              سفارش پلن
+            </a>
+          </div>
+
+          <div class="price-card">
+            <h3>🛒 پلن فروشگاهی</h3>
+            <div class="price">
+              ۵,۰۰۰,۰۰۰
+              <span>تومان / شروع از</span>
+            </div>
+
+            <ul class="features">
+              <li>فروشگاه اینترنتی</li>
+              <li>صفحات محصولات</li>
+              <li>سبد خرید</li>
+              <li>امکانات پایه فروشگاه</li>
+            </ul>
+
+            <a href="https://t.me/Sfbhf" target="_blank" class="card-btn">
+              سفارش پلن
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Why -->
+    <section id="why">
+      <div class="container">
+
+        <div class="why">
+
+          <div class="why-text">
+            <h2>
+              چرا <span>CODEX</span>؟
+            </h2>
+
+            <p>
+              هدف ما اینه که کسب‌وکارهای کوچک و افرادی که تازه می‌خوان
+              وارد دنیای وب بشن، بتونن با هزینه منطقی یک سایت شیک و کاربردی داشته باشن.
+            </p>
+          </div>
+
+          <div class="why-list">
+
+            <div class="why-item">
+              <div class="icon">💰</div>
+              <div>
+                <b>قیمت اقتصادی</b>
+                <span>مناسب برای شروع کسب‌وکارهای کوچک</span>
+              </div>
+            </div>
+
+            <div class="why-item">
+              <div class="icon">📱</div>
+              <div>
+                <b>سازگار با موبایل</b>
+                <span>نمایش مناسب در تمام دستگاه‌ها</span>
+              </div>
+            </div>
+			  <div class="why-item">
+              <div class="icon">⚡</div>
+              <div>
+                <b>طراحی تمیز و کاربردی</b>
+                <span>تمرکز روی تجربه کاربری و سادگی</span>
+              </div>
+            </div>
+
+            <div class="why-item">
+              <div class="icon">💬</div>
+              <div>
+                <b>مشاوره قبل از سفارش</b>
+                <span>ابتدا نیاز شما بررسی می‌شود</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section id="steps">
+      <div class="container">
+
+        <div class="section-title">
+          <small>HOW IT WORKS</small>
+          <h2>مراحل سفارش</h2>
+        </div>
+
+        <div class="steps">
+
+          <div class="step">
+            <div class="step-number">۱</div>
+            <h3>مشاوره</h3>
+            <p>نیاز و هدف سایت شما را بررسی می‌کنیم.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">۲</div>
+            <h3>انتخاب پلن</h3>
+            <p>بهترین گزینه را بر اساس بودجه و امکانات انتخاب می‌کنیم.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">۳</div>
+            <h3>طراحی</h3>
+            <p>طراحی و پیاده‌سازی سایت شروع می‌شود.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-number">۴</div>
+            <h3>تحویل</h3>
+            <p>سایت نهایی آماده استفاده خواهد بود.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section>
+      <div class="container">
+
+        <div class="cta">
+          <h2>آماده‌ای سایتت رو شروع کنی؟ 🚀</h2>
+
+          <p>
+            همین الان برای مشاوره و اعلام قیمت دقیق پروژه پیام بده.
+          </p>
+
+          <a href="https://t.me/Sfbhf" target="_blank" class="btn btn-primary">
+            💬 پیام در تلگرام
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+
+      <div class="footer-logo">
+        CODEX <span>ACADEMY</span>
+      </div>
+
+      <div>
+        © 2026 CODEX ACADEMY — تمامی حقوق محفوظ است.
+      </div>
+
+      <a href="https://t.me/CodexAcadem" target="_blank">
+        کانال تلگرام
+      </a>
+
+    </div>
+  </footer>
+
+</body>
+</html>
